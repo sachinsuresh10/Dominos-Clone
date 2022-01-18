@@ -1,0 +1,6 @@
+.example-card {
+    max-width: 500px;
+    max-height:600px;
+    background-color: #D41B35;
+    align-items: center;
+  }

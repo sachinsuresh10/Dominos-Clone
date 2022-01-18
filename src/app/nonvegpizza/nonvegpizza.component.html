@@ -1,0 +1,37 @@
+<h2 style="color: #095C91;padding-bottom: 30px;">Available delicious Non Veg Pizzas!</h2>
+<div class="container">
+    <div style="overflow: auto;">
+        <div class="mat-elevation-z8">
+            <mat-table [dataSource] = "listdata" matSort>
+                <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns:columns;"></mat-row>
+    
+            
+    
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Name of the Pizza</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.name}}</mat-header-cell>
+            </ng-container>
+
+    
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.description}}</mat-header-cell>
+            </ng-container>
+    
+    
+            <ng-container matColumnDef="Add to Cart">
+                <mat-header-cell *matHeaderCellDef>Add to Cart</mat-header-cell>
+                <mat-header-cell *matCellDef="let row">
+                    <button class="btn btn-success" (click)="addtocart(row)"  >
+                      Add to Cart +  
+                    </button>
+                  
+                </mat-header-cell>
+            </ng-container>
+    
+            </mat-table>
+        </div>
+        
+    </div>
+</div>

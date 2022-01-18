@@ -1,0 +1,47 @@
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h2>Dominos</h2>
+        <p class="lead">Tell us What you feel</p>
+      </div>
+
+      <h4 style="margin-bottom: 20px;">Review Pizza</h4>
+
+      <div class="col-md-7 col-lg-8">
+          <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+            <div class="row">
+
+              <div class="col-12">
+                <label for="username" class="form-label">Username </label>
+                <input type="text" class="form-control" id="username" name="username"
+                #username="ngModel" [(ngModel)] = "service.formdata.username">
+              </div>
+  
+              <div class="col-12">
+                <label for="email" class="form-label">Name of the Pizza </label>
+                <input type="email" class="form-control" name="pizzaname"
+                #pizzaname="ngModel" [(ngModel)] = "service.formdata.pizzaname">
+              </div>
+
+              <div class="col-12">
+                  <label for="text" class="form-label">Review</label>
+                  <input type="text" class="form-control" id="mobile" name="review1"
+                  #review="ngModel" [(ngModel)] = "service.formdata.review1">
+                </div>
+
+                <div class="col-12">
+                  <label for="password" class="form-label">Ratings(out of 5) </label>
+                  <input type="number" class="form-control" id="stars" name="rateings" min="1" max="5"
+                  #rateings="ngModel" [(ngModel)] = "service.formdata.rateings">
+                </div>
+
+                <button mat-raised class="w-100 btn btn-primary btn-lg" style="margin-top: 10px;" type="submit">Submit</button>
+                </div>
+            </form>
+            <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">©️ Dominos</p>
+                </footer>
+        </div>
+    </main>
+</div>
+

@@ -1,0 +1,47 @@
+
+    <div class="container">
+        <main>
+          <div class="py-5 text-center">
+            <h2>Dominos</h2>
+            <p class="lead">Register in order to enjoy delicious pizza in your home</p>
+          </div>
+    
+          <h4 style="margin-bottom: 20px;">Registration Details</h4>
+    
+          <div class="col-md-7 col-lg-8">
+              <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                <div class="row">
+    
+                  <div class="col-12">
+                    <label for="username" class="form-label">Username </label>
+                    <input type="text" class="form-control" id="usersname" name="usersname"
+                    #usersname="ngModel" [(ngModel)] = "service.formdata.usersname">
+                  </div>
+      
+                  <div class="col-12">
+                    <label for="email" class="form-label">Email </label>
+                    <input type="email" class="form-control" placeholder="you@example.com" name="email"
+                    #email="ngModel" [(ngModel)] = "service.formdata.email">
+                  </div>
+    
+                  <div class="col-12">
+                      <label for="text" class="form-label">Phone </label>
+                      <input type="text" class="form-control" id="mobile" name="mobile"
+                      #mobile="ngModel" [(ngModel)] = "service.formdata.mobile">
+                    </div>
+    
+                    <div class="col-12">
+                      <label for="password" class="form-label">Password </label>
+                      <input type="password" class="form-control" id="password" name="password"
+                      #password="ngModel" [(ngModel)] = "service.formdata.password">
+                    </div>
+    
+                    <button mat-raised class="w-100 btn btn-primary btn-lg" style="margin-top: 10px;" type="submit">Sign-up</button>
+                    </div>
+                </form>
+                <footer class="my-5 pt-5 text-muted text-center text-small">
+                    <p class="mb-1">©️ Dominos</p>
+                    </footer>
+            </div>
+        </main>
+    </div>
