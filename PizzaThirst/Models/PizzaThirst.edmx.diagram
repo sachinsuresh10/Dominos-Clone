@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27c2e30b895544c981759c45ea65858a" Name="Diagram1">
+        <EntityTypeShape EntityType="PizzaThirstModel.cart" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaThirstModel.category" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaThirstModel.NonvegPizza" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaThirstModel.order_pizza" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaThirstModel.pizza" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaThirstModel.user" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaThirstModel.VegPizza" Width="1.5" PointX="5.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="PizzaThirstModel.FK__pizza__categoryI__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaThirstModel.FK_order_pizza_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PizzaThirstModel.review" Width="1.5" PointX="5.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
