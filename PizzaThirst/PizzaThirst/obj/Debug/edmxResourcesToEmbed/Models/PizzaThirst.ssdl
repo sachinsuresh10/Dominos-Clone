@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PizzaThirstModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="cartid" />
+    </Key>
+    <Property Name="cartid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="NonvegPizza">
+    <Key>
+      <PropertyRef Name="Nvegid" />
+    </Key>
+    <Property Name="Nvegid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="order_pizza">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ordernumber" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="paymentmethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="totalamount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pizza">
+    <Key>
+      <PropertyRef Name="pizzaid" />
+    </Key>
+    <Property Name="pizzaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="categoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="reviewid" />
+    </Key>
+    <Property Name="reviewid" Type="int" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pizzaname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="review" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="rateings" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="usersid" />
+    </Key>
+    <Property Name="usersid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="mobile" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="VegPizza">
+    <Key>
+      <PropertyRef Name="vegid" />
+    </Key>
+    <Property Name="vegid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__pizza__categoryI__3B75D760">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="pizza" Type="Self.pizza" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pizza">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_pizza_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="order_pizza" Type="Self.order_pizza" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usersid" />
+      </Principal>
+      <Dependent Role="order_pizza">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PizzaThirstModelStoreContainer">
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NonvegPizza" EntityType="Self.NonvegPizza" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_pizza" EntityType="Self.order_pizza" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pizza" EntityType="Self.pizza" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="review" EntityType="Self.review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VegPizza" EntityType="Self.VegPizza" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__pizza__categoryI__3B75D760" Association="Self.FK__pizza__categoryI__3B75D760">
+      <End Role="category" EntitySet="category" />
+      <End Role="pizza" EntitySet="pizza" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_pizza_users" Association="Self.FK_order_pizza_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="order_pizza" EntitySet="order_pizza" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

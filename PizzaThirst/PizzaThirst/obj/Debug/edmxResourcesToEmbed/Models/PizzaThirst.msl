@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PizzaThirstModelStoreContainer" CdmEntityContainer="PizzaThirstEntities">
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="PizzaThirstModel.cart">
+        <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="cartid" ColumnName="cartid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="PizzaThirstModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NonvegPizzas">
+      <EntityTypeMapping TypeName="PizzaThirstModel.NonvegPizza">
+        <MappingFragment StoreEntitySet="NonvegPizza">
+          <ScalarProperty Name="Nvegid" ColumnName="Nvegid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_pizza">
+      <EntityTypeMapping TypeName="PizzaThirstModel.order_pizza">
+        <MappingFragment StoreEntitySet="order_pizza">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="ordernumber" ColumnName="ordernumber" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="paymentmethod" ColumnName="paymentmethod" />
+          <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pizzas">
+      <EntityTypeMapping TypeName="PizzaThirstModel.pizza">
+        <MappingFragment StoreEntitySet="pizza">
+          <ScalarProperty Name="pizzaid" ColumnName="pizzaid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="PizzaThirstModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="usersid" ColumnName="usersid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VegPizzas">
+      <EntityTypeMapping TypeName="PizzaThirstModel.VegPizza">
+        <MappingFragment StoreEntitySet="VegPizza">
+          <ScalarProperty Name="vegid" ColumnName="vegid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="PizzaThirstModel.review">
+        <MappingFragment StoreEntitySet="review">
+          <ScalarProperty Name="rateings" ColumnName="rateings" />
+          <ScalarProperty Name="review1" ColumnName="review" />
+          <ScalarProperty Name="pizzaname" ColumnName="pizzaname" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="reviewid" ColumnName="reviewid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

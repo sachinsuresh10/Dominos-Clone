@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PizzaThirstModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="cartid" />
+    </Key>
+    <Property Name="cartid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="pizzas" Relationship="Self.FK__pizza__categoryI__3B75D760" FromRole="category" ToRole="pizza" />
+  </EntityType>
+  <EntityType Name="NonvegPizza">
+    <Key>
+      <PropertyRef Name="Nvegid" />
+    </Key>
+    <Property Name="Nvegid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order_pizza">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ordernumber" Type="Int32" Nullable="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="paymentmethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="totalamount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_order_pizza_users" FromRole="order_pizza" ToRole="users" />
+  </EntityType>
+  <EntityType Name="pizza">
+    <Key>
+      <PropertyRef Name="pizzaid" />
+    </Key>
+    <Property Name="pizzaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="categoryID" Type="Int32" />
+    <NavigationProperty Name="category" Relationship="Self.FK__pizza__categoryI__3B75D760" FromRole="pizza" ToRole="category" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="usersid" />
+    </Key>
+    <Property Name="usersid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="order_pizza" Relationship="Self.FK_order_pizza_users" FromRole="users" ToRole="order_pizza" />
+  </EntityType>
+  <EntityType Name="VegPizza">
+    <Key>
+      <PropertyRef Name="vegid" />
+    </Key>
+    <Property Name="vegid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__pizza__categoryI__3B75D760">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="pizza" Type="Self.pizza" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pizza">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_pizza_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="order_pizza" Type="Self.order_pizza" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usersid" />
+      </Principal>
+      <Dependent Role="order_pizza">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PizzaThirstEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="carts" EntityType="Self.cart" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="NonvegPizzas" EntityType="Self.NonvegPizza" />
+    <EntitySet Name="order_pizza" EntityType="Self.order_pizza" />
+    <EntitySet Name="pizzas" EntityType="Self.pizza" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="VegPizzas" EntityType="Self.VegPizza" />
+    <AssociationSet Name="FK__pizza__categoryI__3B75D760" Association="Self.FK__pizza__categoryI__3B75D760">
+      <End Role="category" EntitySet="categories" />
+      <End Role="pizza" EntitySet="pizzas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_pizza_users" Association="Self.FK_order_pizza_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="order_pizza" EntitySet="order_pizza" />
+    </AssociationSet>
+    <EntitySet Name="reviews" EntityType="PizzaThirstModel.review" />
+  </EntityContainer>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="reviewid" />
+    </Key>
+    <Property Name="reviewid" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pizzaname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="review1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rateings" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>
